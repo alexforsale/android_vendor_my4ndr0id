@@ -18,6 +18,9 @@ PRODUCT_BRAND ?= my4ndr0id
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
+# Common overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/my4ndr0id/overlay/common
+
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
