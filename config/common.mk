@@ -42,6 +42,44 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false
 
+# aokp Blobs common to all devices
+PRODUCT_PACKAGES += \
+    LatinImeDictionaryPack \
+    resolv.conf \
+    Microbes \
+    libmicrobes_jni \
+    UnicornPorn
+
+# aokp init.d
+PRODUCT_PACKAGES += \
+    00check \
+    01zipalign \
+    02sysctl \
+    03firstboot \
+    05freemem \
+    06removecache \
+    07fixperms \
+    09cron \
+    10sdboost \
+    98tweaks \
+    liberty.bsh \
+    sysctl.conf
+
+# aokp cron
+PRODUCT_COPY_FILES += \
+    vendor/my4ndr0id/prebuilt/etc/cron/cron.conf:system/etc/cron/cron.conf \
+    vendor/my4ndr0id/prebuilt/etc/cron/cron.hourly/00drop_caches:system/etc/cron/cron.hourly/00drop_caches \
+    vendor/my4ndr0id/prebuilt/etc/cron/cron.daily/00drop_caches:system/etc/cron/cron.daily/00drop_caches \
+    vendor/my4ndr0id/prebuilt/etc/cron/cron.weekly/00drop_caches:system/etc/cron/cron.weekly/00drop_caches \
+    vendor/my4ndr0id/prebuilt/etc/cron/cron.hourly/01clear_cache:system/etc/cron/cron.hourly/01clear_cache \
+    vendor/my4ndr0id/prebuilt/etc/cron/cron.daily/01clear_cache:system/etc/cron/cron.daily/01clear_cache \
+    vendor/my4ndr0id/prebuilt/etc/cron/cron.weekly/01clear_cache:system/etc/cron/cron.weekly/01clear_cache
+
+PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+
+# Inherit common build.prop overrides
+-include vendor/my4ndr0id/config/common_versions.mk
+
 # Backup Tool
 PRODUCT_PACKAGES += \
     backuptool.sh \
@@ -165,3 +203,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     ota-update-centre
+
+# Camera shutter sound property
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.sys.camera-sound=1
